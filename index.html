@@ -163,17 +163,16 @@
   </script>
 </body>
 </html>
-<!-- Botpress Webchat -->
-<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+<!-- ChatGPT Web Widget -->
+<script src="https://cdn.jsdelivr.net/npm/@chatgpt-widget/chatgpt-widget@1.0.6/dist/widget.min.js"></script>
 <script>
-  window.botpressWebChat.init({
-    host: "https://cdn.botpress.cloud/webchat/v3.3",
-    botId: "1AKX4PPN",  // replace with your Botpress bot ID
-    enableReset: true,
-    showConversationsButton: true,
+  ChatGPTWidget.init({
+    apiKey: "YOUR_OPENAI_API_KEY",  // put your OpenAI key here
     botName: "Ndamue AI Assistant",
-    avatarUrl: "https://i.imgur.com/6z4cPpN.png", // small AI icon
-    containerWidth: 400,
-    containerHeight: 500
+    welcomeMessage: "Hi! I’m your tech assistant. Ask me anything about websites or software!",
+    placeholder: "Type your question...",
+    position: "bottom-right",
+    avatar: "https://i.imgur.com/6z4cPpN.png"
   });
 </script>
+
