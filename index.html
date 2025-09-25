@@ -5,126 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NDAMUE RAMS TECH</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #000;
-      color: #fff;
-      overflow-x: hidden;
-    }
-    canvas#matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI', sans-serif; background:#000; color:#fff; overflow-x:hidden; }
+    canvas#matrix { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+
+    header { text-align:center; padding:40px 20px 20px; }
     header h1 {
-      font-size: 2.5rem;
-      letter-spacing: 3px;
-      font-weight: bold;
+      font-size:2.5rem;
+      letter-spacing:3px;
+      font-weight:bold;
       background: linear-gradient(90deg,#0ff,#0f0,#0ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glow 3s infinite alternate;
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #0ff, 0 0 20px #0f0; }
-      to { text-shadow: 0 0 20px #0ff, 0 0 40px #0f0; }
-    }
-    nav {
-      margin-top: 15px;
-    }
-    nav a {
-      margin: 0 15px;
-      color: #0ff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover { color: #ffd700; }
+    @keyframes glow { from { text-shadow:0 0 10px #0ff,0 0 20px #0f0;} to { text-shadow:0 0 20px #0ff,0 0 40px #0f0; } }
+    nav { margin-top:15px; }
+    nav a { margin:0 15px; color:#0ff; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav a:hover { color:#ffd700; }
 
-    section {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 20px;
-      background: rgba(0,0,0,0.7);
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    section { max-width:1000px; margin:60px auto; padding:20px; background:rgba(0,0,0,0.7); border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.6); }
+    section h2 { text-align:center; font-size:2rem; margin-bottom:20px; color:#0ff; }
+    .services .service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+    .service { background:#111; padding:20px; border-radius:10px; transition: transform 0.3s; }
+    .service:hover { transform:translateY(-5px); }
+    .service h3 { color:#0f0; margin-bottom:10px; }
+    .about p { text-align:center; font-size:1.1rem; max-width:800px; margin:auto; }
+
+    form { max-width:600px; margin:auto; position:relative; }
+    form input, form textarea, form button { width:100%; padding:12px; margin:10px 0; border:none; border-radius:8px; font-size:1rem; }
+    form input, form textarea { background:#222; color:#fff; }
+    form button { background:#0ff; color:#000; font-weight:bold; cursor:pointer; transition:0.3s; }
+    form button:hover { background:#0f0; }
+
+    #formMessage {
+      display:none;
+      text-align:center;
+      margin-top:15px;
+      padding:10px;
+      border-radius:8px;
+      background:#0f0;
+      color:#000;
+      font-weight:bold;
     }
-    section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #0ff;
-    }
-    .services .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 20px;
-    }
-    .service {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-    .service:hover { transform: translateY(-5px); }
-    .service h3 {
-      color: #0f0;
-      margin-bottom: 10px;
-    }
-    .about p {
-      text-align: center;
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    form {
-      max-width: 600px;
-      margin: auto;
-    }
-    form input, form textarea, form button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    form input, form textarea {
-      background: #222;
-      color: #fff;
-    }
-    form button {
-      background: #0ff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    form button:hover { background: #0f0; }
-    .contact-info {
-      text-align: center;
-      margin-top: 20px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      background: #000;
-      border-top: 1px solid #222;
-      margin-top: 40px;
-    }
+
+    .contact-info { text-align:center; margin-top:20px; }
+    footer { text-align:center; padding:20px; font-size:0.9rem; background:#000; border-top:1px solid #222; margin-top:40px; }
   </style>
 </head>
 <body>
@@ -168,15 +94,16 @@
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <form name="contact" method="POST" data-netlify="true">
+    <form name="contact" method="POST" data-netlify="true" id="contactForm">
       <input type="hidden" name="form-name" value="contact">
-      
+
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <input type="text" name="phone" placeholder="Your Phone / WhatsApp">
       <textarea name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
-      
+
       <button type="submit">Send Message</button>
+      <div id="formMessage">✅ Thank you! Your message has been sent.</div>
     </form>
     <div class="contact-info">
       <p>📧 Email: ramalivhanandamulelo@gmail.com</p>
@@ -189,13 +116,11 @@
   </footer>
 
   <script>
-    // Matrix background animation
+    // Matrix animation
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
-
     let columns = Math.floor(width / 20);
     let drops = Array(columns).fill(1);
 
@@ -205,19 +130,35 @@
       ctx.fillStyle = '#0f0';
       ctx.font = '16px monospace';
       for(let i=0;i<drops.length;i++){
-        let text = Math.random() > 0.5 ? '0' : '1';
-        ctx.fillText(text, i*20, drops[i]*20);
-        if(drops[i]*20 > height && Math.random() > 0.975) drops[i]=0;
+        let text = Math.random()>0.5?'0':'1';
+        ctx.fillText(text,i*20,drops[i]*20);
+        if(drops[i]*20>height && Math.random()>0.975) drops[i]=0;
         drops[i]++;
       }
     }
     setInterval(draw,50);
-
     window.addEventListener('resize',()=>{
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       columns = Math.floor(width / 20);
       drops = Array(columns).fill(1);
+    });
+
+    // Form submission with "Thank you" message
+    const form = document.getElementById('contactForm');
+    const messageDiv = document.getElementById('formMessage');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); // prevent default page reload
+
+      // simulate successful submission for Netlify
+      fetch('/', {
+        method: 'POST',
+        body: new FormData(form)
+      }).then(() => {
+        messageDiv.style.display = 'block';
+        form.reset();
+      }).catch(err => alert('Error sending form!'));
     });
   </script>
 </body>
