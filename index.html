@@ -5,174 +5,226 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NDAMUE RAMS TECH</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI', sans-serif; background:#000; color:#fff; overflow-x:hidden; }
-    canvas#matrix { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: black;
+      overflow-x: hidden;
+    }
 
-    header { text-align:center; padding:40px 20px 20px; }
+    canvas#matrix {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+
     header h1 {
-      font-size:2.5rem;
-      letter-spacing:3px;
-      font-weight:bold;
-      background: linear-gradient(90deg,#0ff,#0f0,#0ff);
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00eaff;
+      text-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff;
+    }
+
+    header .logo {
+      font-size: 4rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #00eaff, #ff00ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glow 3s infinite alternate;
-    }
-    @keyframes glow { from { text-shadow:0 0 10px #0ff,0 0 20px #0f0;} to { text-shadow:0 0 20px #0ff,0 0 40px #0f0; } }
-    nav { margin-top:15px; }
-    nav a { margin:0 15px; color:#0ff; text-decoration:none; font-weight:bold; transition:0.3s; }
-    nav a:hover { color:#ffd700; }
-
-    section { max-width:1000px; margin:60px auto; padding:20px; background:rgba(0,0,0,0.7); border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.6); }
-    section h2 { text-align:center; font-size:2rem; margin-bottom:20px; color:#0ff; }
-    .services .service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-    .service { background:#111; padding:20px; border-radius:10px; transition: transform 0.3s; }
-    .service:hover { transform:translateY(-5px); }
-    .service h3 { color:#0f0; margin-bottom:10px; }
-    .about p { text-align:center; font-size:1.1rem; max-width:800px; margin:auto; }
-
-    form { max-width:600px; margin:auto; position:relative; }
-    form input, form textarea, form button { width:100%; padding:12px; margin:10px 0; border:none; border-radius:8px; font-size:1rem; }
-    form input, form textarea { background:#222; color:#fff; }
-    form button { background:#0ff; color:#000; font-weight:bold; cursor:pointer; transition:0.3s; }
-    form button:hover { background:#0f0; }
-
-    #formMessage {
-      display:none;
-      text-align:center;
-      margin-top:15px;
-      padding:10px;
-      border-radius:8px;
-      background:#0f0;
-      color:#000;
-      font-weight:bold;
+      margin-bottom: 10px;
     }
 
-    .contact-info { text-align:center; margin-top:20px; }
-    footer { text-align:center; padding:20px; font-size:0.9rem; background:#000; border-top:1px solid #222; margin-top:40px; }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00eaff;
+    }
+
+    section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .services {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .service-card {
+      background: rgba(0,0,0,0.7);
+      border: 1px solid #00eaff;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00eaff;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #00eaff;
+      border: none;
+      padding: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00c3cc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #00eaff;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    #thankYouMessage {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: #00ff99;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
   <header>
-    <h1>⚡ NDAMUE RAMS TECH ⚡</h1>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="logo">⌨️</div>
+    <h1>NDAMUE RAMS TECH</h1>
+    <p>We Build Modern Websites & Software Solutions</p>
   </header>
 
-  <section id="services" class="services">
+  <section>
+    <h2>About Us</h2>
+    <p>At Ndamue Rams Tech, we specialize in creating beautiful, responsive, and functional websites and software solutions tailored to your needs. From business websites to advanced software, we bring your ideas to life.</p>
+  </section>
+
+  <section>
     <h2>Our Services</h2>
-    <div class="service-grid">
-      <div class="service">
+    <div class="services">
+      <div class="service-card">
         <h3>🌐 Website Development</h3>
-        <p>Custom, responsive, and modern websites for businesses and individuals.</p>
+        <p>Responsive, fast, and modern websites that help your business shine online.</p>
       </div>
-      <div class="service">
+      <div class="service-card">
         <h3>💻 Software Solutions</h3>
-        <p>Desktop & mobile apps tailored to your unique needs.</p>
+        <p>Custom desktop and web-based software designed for your unique needs.</p>
       </div>
-      <div class="service">
-        <h3>⚡ Tech Consulting</h3>
-        <p>Expert digital advice to move your business forward.</p>
+      <div class="service-card">
+        <h3>📱 Mobile Apps</h3>
+        <p>Android applications that bring your services closer to your customers.</p>
       </div>
     </div>
   </section>
 
-  <section id="about" class="about">
-    <h2>About NDAMUE RAMS TECH</h2>
-    <p>
-      We are passionate about technology and innovation. At NDAMUE RAMS TECH, 
-      we design and build professional websites, custom software, and digital solutions 
-      that help businesses grow and succeed in the modern world.
-    </p>
-  </section>
-
-  <section id="contact" class="contact">
+  <section>
     <h2>Contact Us</h2>
-    <form name="contact" method="POST" data-netlify="true" id="contactForm">
-      <input type="hidden" name="form-name" value="contact">
-
+    <form name="contact" method="POST" data-netlify="true">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="phone" placeholder="Your Phone / WhatsApp">
-      <textarea name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
-
+      <input type="text" name="phone" placeholder="Your Phone/WhatsApp" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
-      <div id="formMessage">✅ Thank you! Your message has been sent.</div>
     </form>
-    <div class="contact-info">
-      <p>📧 Email: ramalivhanandamulelo@gmail.com</p>
-      <p>📞 Phone/WhatsApp: 060 948 6195</p>
-    </div>
+    <div id="thankYouMessage">✅ Thank you for contacting us! We’ll get back to you soon.</div>
   </section>
 
   <footer>
-    <p>© 2025 NDAMUE RAMS TECH | Built with ⚡ Passion & Innovation ⚡</p>
+    <p>📞 Phone/WhatsApp: 060 948 6195 | 📧 Email: ramalivhanandamulelo@gmail.com</p>
+    <p>&copy; 2025 NDAMUE RAMS TECH. All Rights Reserved.</p>
   </footer>
 
+  <!-- Matrix Background Script -->
   <script>
-    // Matrix animation
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-    let columns = Math.floor(width / 20);
-    let drops = Array(columns).fill(1);
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
 
-    function draw(){
-      ctx.fillStyle = 'rgba(0,0,0,0.05)';
-      ctx.fillRect(0,0,width,height);
-      ctx.fillStyle = '#0f0';
-      ctx.font = '16px monospace';
-      for(let i=0;i<drops.length;i++){
-        let text = Math.random()>0.5?'0':'1';
-        ctx.fillText(text,i*20,drops[i]*20);
-        if(drops[i]*20>height && Math.random()>0.975) drops[i]=0;
+    const letters = "01".split("");
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = "#00eaff";
+      ctx.font = fontSize + "px monospace";
+      for(let i=0;i<drops.length;i++) {
+        const text = letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+        if(drops[i]*fontSize > canvas.height && Math.random()>0.975) {
+          drops[i]=0;
+        }
         drops[i]++;
       }
     }
-    setInterval(draw,50);
-    window.addEventListener('resize',()=>{
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      columns = Math.floor(width / 20);
-      drops = Array(columns).fill(1);
+    setInterval(draw,35);
+
+    // Thank You Popup
+    const form = document.querySelector("form");
+    const thankYouMessage = document.getElementById("thankYouMessage");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      thankYouMessage.style.display = "block";
+      form.reset();
     });
+  </script>
 
-    // Form submission with "Thank you" message
-    const form = document.getElementById('contactForm');
-    const messageDiv = document.getElementById('formMessage');
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault(); // prevent default page reload
-
-      // simulate successful submission for Netlify
-      fetch('/', {
-        method: 'POST',
-        body: new FormData(form)
-      }).then(() => {
-        messageDiv.style.display = 'block';
-        form.reset();
-      }).catch(err => alert('Error sending form!'));
+  <!-- AI Assistant (ChatGPT Widget) -->
+  <script src="https://cdn.jsdelivr.net/npm/@chatgpt-widget/chatgpt-widget@1.0.6/dist/widget.min.js"></script>
+  <script>
+    ChatGPTWidget.init({
+      apiKey: "YOUR_OPENAI_API_KEY",  // Replace with your OpenAI key
+      botName: "Ndamue AI Assistant",
+      welcomeMessage: "Hi 👋 I'm your smart tech assistant! Ask me anything about websites or software.",
+      placeholder: "Type your question...",
+      position: "bottom-right",
+      avatar: "https://i.imgur.com/6z4cPpN.png"
     });
   </script>
 </body>
 </html>
-<!-- ChatGPT Web Widget -->
-<script src="https://cdn.jsdelivr.net/npm/@chatgpt-widget/chatgpt-widget@1.0.6/dist/widget.min.js"></script>
-<script>
-  ChatGPTWidget.init({
-    apiKey: "YOUR_OPENAI_API_KEY",  // put your OpenAI key here
-    botName: "Ndamue AI Assistant",
-    welcomeMessage: "Hi! I’m your tech assistant. Ask me anything about websites or software!",
-    placeholder: "Type your question...",
-    position: "bottom-right",
-    avatar: "https://i.imgur.com/6z4cPpN.png"
-  });
-</script>
-
