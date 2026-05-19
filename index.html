@@ -1,225 +1,538 @@
-export default function FamilySafetyTracker() {
-  const company = {
-    name: "RAMX",
-    email: "ramalivhanandamulelo@gmail.com",
-    phone: "0609486195",
-  };
-  const devices = [
-    {
-      device: "Samsung Galaxy S24",
-      status: "Online",
-      battery: "82%",
-      location: "Active Location Available",
-    },
-    {
-      device: "iPhone 15 Pro",
-      status: "Online",
-      battery: "64%",
-      location: "Connected to Live Tracking",
-    },
-    {
-      device: "Redmi Note 13",
-      status: "Offline",
-      battery: "21%",
-      location: "Last Seen 15 Minutes Ago",
-    },
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RAMX - Smart Family Safety Platform</title>
 
-  return (
-    <div className="min-h-screen bg-black text-white p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-2xl font-bold shadow-xl">
-                  R
-                </div>
-                <h1 className="text-5xl font-extrabold tracking-tight">RAMX</h1>
-              </div>
-              <p className="text-blue-400 font-medium text-lg">
-                Smart Family Safety & Device Tracking
-              </p>
-            <p className="text-gray-400 mt-2">
-              Professional real-time family protection platform
-            </p>
-          </div>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
 
-          <button className="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-2xl font-semibold transition">
-            + Add Device
-          </button>
-        </div>
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl border border-zinc-800">
-            <div className="p-5 border-b border-zinc-800 flex items-center justify-between">
-              <h2 className="text-2xl font-semibold">Live Family Map</h2>
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:25px 8%;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      position:sticky;
+      top:0;
+      background:#050816ee;
+      backdrop-filter:blur(10px);
+      z-index:100;
+    }
 
-              <div className="flex gap-3">
-                <button className="bg-green-600 px-4 py-2 rounded-xl">
-                  Live Tracking
-                </button>
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
 
-                <button className="bg-red-600 px-4 py-2 rounded-xl">
-                  Lost Mode
-                </button>
-              </div>
-            </div>
+    .logo-box{
+      width:50px;
+      height:50px;
+      border-radius:16px;
+      background:#2563eb;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      font-weight:bold;
+    }
 
-            <div className="h-[500px] w-full relative bg-zinc-950 flex items-center justify-center">
-              <img
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1600&auto=format&fit=crop"
-                alt="Map"
-                className="w-full h-full object-cover opacity-60"
-              />
+    .logo h1{
+      font-size:34px;
+    }
 
-              <div className="absolute inset-0 bg-black/40" />
+    .logo p{
+      color:#60a5fa;
+      font-size:12px;
+    }
 
-              <div className="absolute top-20 left-24 bg-blue-500 w-5 h-5 rounded-full animate-ping" />
-              <div className="absolute top-20 left-24 bg-blue-500 w-5 h-5 rounded-full" />
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+      padding:80px 8%;
+    }
 
-              <div className="absolute bottom-24 right-40 bg-green-500 w-5 h-5 rounded-full animate-ping" />
-              <div className="absolute bottom-24 right-40 bg-green-500 w-5 h-5 rounded-full" />
+    .badge{
+      display:inline-block;
+      background:rgba(37,99,235,0.2);
+      border:1px solid rgba(37,99,235,0.3);
+      color:#60a5fa;
+      padding:12px 20px;
+      border-radius:100px;
+      margin-bottom:25px;
+    }
 
-              <div className="absolute bottom-16 left-1/2 bg-red-500 w-5 h-5 rounded-full animate-ping" />
-              <div className="absolute bottom-16 left-1/2 bg-red-500 w-5 h-5 rounded-full" />
+    .hero h2{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:25px;
+    }
 
-              <div className="absolute bottom-6 left-6 bg-black/70 p-4 rounded-2xl border border-zinc-700">
-                <p className="text-sm text-gray-300">
-                  Real GPS tracking can be connected later using Firebase + phone permissions.
-                </p>
-              </div>
-            </div>
-          </div>
+    .hero h2 span{
+      color:#2563eb;
+    }
 
-          <div className="space-y-6">
-            <div className="bg-zinc-900 rounded-3xl p-5 border border-zinc-800 shadow-xl">
-              <h2 className="text-2xl font-semibold mb-5">Connected Devices</h2>
+    .hero p{
+      color:#9ca3af;
+      line-height:1.8;
+      font-size:18px;
+      margin-bottom:35px;
+    }
 
-              <div className="space-y-4">
-                {devices.map((device, index) => (
-                  <div
-                    key={index}
-                    className="bg-zinc-800 rounded-2xl p-4 border border-zinc-700"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-semibold text-lg">{device.device}</h3>
+    .buttons{
+      display:flex;
+      gap:20px;
+      margin-bottom:50px;
+    }
 
-                      <span
-                        className={`px-3 py-1 rounded-full text-sm ${
-                          device.status === "Online"
-                            ? "bg-green-600"
-                            : "bg-red-600"
-                        }`}
-                      >
-                        {device.status}
-                      </span>
-                    </div>
+    .btn{
+      padding:16px 30px;
+      border:none;
+      border-radius:18px;
+      cursor:pointer;
+      font-size:16px;
+      font-weight:bold;
+      transition:0.3s;
+    }
 
-                    <div className="space-y-2 text-gray-300 text-sm">
-                      <p>Battery: {device.battery}</p>
-                      <p>{device.location}</p>
-                    </div>
+    .primary{
+      background:#2563eb;
+      color:white;
+    }
 
-                    <div className="flex gap-2 mt-4">
-                      <button className="flex-1 bg-blue-600 hover:bg-blue-700 py-2 rounded-xl text-sm">
-                        Locate
-                      </button>
+    .primary:hover{
+      background:#1d4ed8;
+    }
 
-                      <button className="flex-1 bg-yellow-600 hover:bg-yellow-700 py-2 rounded-xl text-sm">
-                        Ring
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+    .secondary{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.2);
+      color:white;
+    }
 
-            <div className="bg-zinc-900 rounded-3xl p-5 border border-zinc-800 shadow-xl">
-              <h2 className="text-2xl font-semibold mb-4">Emergency</h2>
+    .stats{
+      display:flex;
+      gap:50px;
+    }
 
-              <div className="space-y-3">
-                <button className="w-full bg-red-600 hover:bg-red-700 py-3 rounded-2xl font-semibold">
-                  Activate Lost Mode
-                </button>
+    .stats h3{
+      font-size:35px;
+    }
 
-                <button className="w-full bg-green-600 hover:bg-green-700 py-3 rounded-2xl font-semibold">
-                  Share Live Location
-                </button>
+    .stats p{
+      font-size:14px;
+      margin-top:5px;
+    }
 
-                <button className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-2xl font-semibold">
-                  Call Emergency Contact
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+    .map-box{
+      background:#0d1224;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.1);
+      position:relative;
+    }
 
-        <div className="mt-8 grid lg:grid-cols-2 gap-6">
-          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800">
-            <h2 className="text-3xl font-bold mb-4">About RAMX</h2>
+    .map-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
 
-            <p className="text-gray-300 leading-7 mb-6">
-              RAMX is a modern family safety and phone recovery platform designed to help families stay connected and protect their devices in emergency situations.
-            </p>
+    .map{
+      position:relative;
+      height:500px;
+    }
 
-            <div className="space-y-4">
-              <div className="bg-zinc-800 p-4 rounded-2xl border border-zinc-700">
-                <p className="text-gray-400 text-sm mb-1">Email</p>
-                <p className="font-semibold text-lg">{company.email}</p>
-              </div>
+    .map img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-              <div className="bg-zinc-800 p-4 rounded-2xl border border-zinc-700">
-                <p className="text-gray-400 text-sm mb-1">Phone</p>
-                <p className="font-semibold text-lg">{company.phone}</p>
-              </div>
-            </div>
-          </div>
+    .pin{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      position:absolute;
+      animation:pulse 1.5s infinite;
+    }
 
-          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800">
-          <h2 className="text-2xl font-semibold mb-4">How To Make It Real</h2>
+    .blue{background:#3b82f6; top:20%; left:30%;}
+    .green{background:#22c55e; top:50%; right:25%;}
+    .red{background:#ef4444; bottom:20%; left:45%;}
 
-          <div className="grid md:grid-cols-4 gap-4">
-            <div className="bg-zinc-800 p-4 rounded-2xl">
-              <h3 className="font-semibold mb-2">1. Firebase</h3>
-              <p className="text-gray-400 text-sm">
-                Connect Firebase Authentication and Firestore.
-              </p>
-            </div>
+    @keyframes pulse{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.5);}
+      100%{transform:scale(1);}
+    }
 
-            <div className="bg-zinc-800 p-4 rounded-2xl">
-              <h3 className="font-semibold mb-2">2. GPS</h3>
-              <p className="text-gray-400 text-sm">
-                Use browser location permission for tracking.
-              </p>
-            </div>
+    .devices{
+      padding:20px 8% 80px;
+    }
 
-            <div className="bg-zinc-800 p-4 rounded-2xl">
-              <h3 className="font-semibold mb-2">3. Maps</h3>
-              <p className="text-gray-400 text-sm">
-                Connect Mapbox or Google Maps.
-              </p>
-            </div>
+    .devices-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:40px;
+    }
 
-            <div className="bg-zinc-800 p-4 rounded-2xl">
-              <h3 className="font-semibold mb-2">4. Deploy</h3>
-              <p className="text-gray-400 text-sm">
-                Upload to GitHub then deploy with Vercel.
-              </p>
-            </div>
-          </div>
-        </div>
-        </div>
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
 
-        <footer className="mt-10 border-t border-zinc-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-400">
-          <p>© 2026 RAMX. All rights reserved.</p>
+    .card{
+      background:#0d1224;
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:30px;
+      padding:30px;
+      transition:0.3s;
+    }
 
-          <div className="flex gap-6 text-sm">
-            <span>{company.email}</span>
-            <span>{company.phone}</span>
-          </div>
-        </footer>
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:#2563eb;
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:15px 0;
+      color:#9ca3af;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+    }
+
+    .online{background:#22c55e;}
+    .offline{background:#ef4444;}
+
+    .battery{
+      background:rgba(255,255,255,0.05);
+      padding:10px 14px;
+      border-radius:12px;
+    }
+
+    .about{
+      padding:0 8% 80px;
+    }
+
+    .about-box{
+      background:#0d1224;
+      border-radius:30px;
+      padding:50px;
+      border:1px solid rgba(255,255,255,0.1);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+    }
+
+    .contact-card{
+      background:rgba(255,255,255,0.03);
+      padding:25px;
+      border-radius:20px;
+      margin-bottom:20px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,0.1);
+      padding:30px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    @media(max-width:900px){
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .hero h2{
+        font-size:50px;
+      }
+
+      .about-box{
+        grid-template-columns:1fr;
+      }
+
+      .stats{
+        flex-wrap:wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">
+      <div class="logo-box">R</div>
+
+      <div>
+        <h1>RAMX</h1>
+        <p>Smart Family Safety Platform</p>
       </div>
     </div>
-  );
-}
+  </nav>
+
+  <section class="hero">
+
+    <div>
+
+      <div class="badge">
+        ● Live GPS Protection Active
+      </div>
+
+      <h2>
+        Protect Your
+        <span>Family Devices</span>
+        In Real Time
+      </h2>
+
+      <p>
+        RAMX helps families securely monitor shared devices, locate lost phones,
+        activate emergency tracking and stay connected through a professional live safety dashboard.
+      </p>
+
+      <div class="buttons">
+        <button class="btn primary">
+          Start Tracking
+        </button>
+
+        <button class="btn secondary">
+          View Devices
+        </button>
+      </div>
+
+      <div class="stats">
+
+        <div>
+          <h3>24/7</h3>
+          <p>Live Monitoring</p>
+        </div>
+
+        <div>
+          <h3>99%</h3>
+          <p>Secure Tracking</p>
+        </div>
+
+        <div>
+          <h3>GPS</h3>
+          <p>Location Sharing</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="map-box">
+
+      <div class="map-header">
+        <div>
+          <h3>Live Tracking Map</h3>
+          <p style="color:#9ca3af;">
+            Connected RAMX devices
+          </p>
+        </div>
+
+        <button class="btn primary">
+          Active
+        </button>
+      </div>
+
+      <div class="map">
+
+        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=1600&auto=format&fit=crop">
+
+        <div class="pin blue"></div>
+        <div class="pin green"></div>
+        <div class="pin red"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="devices">
+
+    <div class="devices-top">
+
+      <div>
+        <h2 style="font-size:45px;">
+          Connected Devices
+        </h2>
+
+        <p style="color:#9ca3af; margin-top:10px;">
+          Securely monitored devices
+        </p>
+      </div>
+
+      <button class="btn primary">
+        + Add Device
+      </button>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2>Samsung Galaxy S24</h2>
+
+          <div class="battery">
+            82%
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="dot online"></div>
+          Online
+        </div>
+
+        <p style="color:#9ca3af;">
+          Active Location Available
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2>iPhone 15 Pro</h2>
+
+          <div class="battery">
+            64%
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="dot online"></div>
+          Online
+        </div>
+
+        <p style="color:#9ca3af;">
+          Connected To Live Tracking
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2>Redmi Note 13</h2>
+
+          <div class="battery">
+            21%
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="dot offline"></div>
+          Offline
+        </div>
+
+        <p style="color:#9ca3af;">
+          Last Seen 15 Minutes Ago
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="about">
+
+    <div class="about-box">
+
+      <div>
+
+        <h2 style="font-size:45px; margin-bottom:25px;">
+          About RAMX
+        </h2>
+
+        <p style="color:#9ca3af; line-height:1.9; font-size:18px;">
+          RAMX is a professional family safety and smart device monitoring platform designed to help users protect and manage shared devices through live GPS tracking, emergency recovery tools and secure cloud-based monitoring.
+        </p>
+
+      </div>
+
+      <div>
+
+        <div class="contact-card">
+
+          <p style="color:#9ca3af; margin-bottom:10px;">
+            Contact Email
+          </p>
+
+          <h2>
+            ramalivhanandamulelo@gmail.com
+          </h2>
+
+        </div>
+
+        <div class="contact-card">
+
+          <p style="color:#9ca3af; margin-bottom:10px;">
+            Phone Number
+          </p>
+
+          <h2>
+            0609486195
+          </h2>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <div>
+      <h2>RAMX</h2>
+      <p style="color:#9ca3af;">
+        Smart Family Safety Platform
+      </p>
+    </div>
+
+    <div style="color:#9ca3af;">
+      © 2026 RAMX. All rights reserved.
+    </div>
+
+  </footer>
+
+</body>
+</html>
