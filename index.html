@@ -26,10 +26,10 @@ justify-content:space-between;
 align-items:center;
 padding:25px 8%;
 border-bottom:1px solid rgba(255,255,255,0.1);
-position:sticky;
-top:0;
 background:#050816ee;
 backdrop-filter:blur(10px);
+position:sticky;
+top:0;
 z-index:100;
 }
 
@@ -51,62 +51,36 @@ font-size:28px;
 font-weight:bold;
 }
 
-.logo h1{
-font-size:34px;
-}
-
-.logo p{
-color:#60a5fa;
-font-size:12px;
-}
-
 .hero{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:60px;
-align-items:center;
 padding:80px 8%;
+align-items:center;
 }
 
-.badge{
-display:inline-block;
-background:rgba(37,99,235,0.2);
-border:1px solid rgba(37,99,235,0.3);
-color:#60a5fa;
-padding:12px 20px;
-border-radius:100px;
-margin-bottom:25px;
-}
-
-.hero h2{
+.hero h1{
 font-size:70px;
 line-height:1.1;
 margin-bottom:25px;
 }
 
-.hero h2 span{
+.hero h1 span{
 color:#2563eb;
 }
 
 .hero p{
 color:#9ca3af;
-line-height:1.8;
 font-size:18px;
+line-height:1.8;
 margin-bottom:35px;
 }
 
-.buttons{
-display:flex;
-gap:20px;
-margin-bottom:50px;
-}
-
 .btn{
-padding:16px 30px;
+padding:15px 28px;
 border:none;
 border-radius:18px;
 cursor:pointer;
-font-size:16px;
 font-weight:bold;
 transition:0.3s;
 }
@@ -126,39 +100,16 @@ border:1px solid rgba(255,255,255,0.2);
 color:white;
 }
 
-.stats{
-display:flex;
-gap:50px;
-}
-
-.stats h3{
-font-size:35px;
-}
-
-.stats p{
-font-size:14px;
-margin-top:5px;
-}
-
 .map-box{
 background:#0d1224;
 border-radius:30px;
 overflow:hidden;
 border:1px solid rgba(255,255,255,0.1);
-position:relative;
-}
-
-.map-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .map{
-position:relative;
 height:500px;
+position:relative;
 overflow:hidden;
 }
 
@@ -166,29 +117,6 @@ overflow:hidden;
 width:100%;
 height:100%;
 object-fit:cover;
-transition:0.4s;
-}
-
-.map:hover img{
-transform:scale(1.05);
-}
-
-.pin{
-width:18px;
-height:18px;
-border-radius:50%;
-position:absolute;
-animation:pulse 1.5s infinite;
-}
-
-.blue{background:#3b82f6; top:20%; left:30%;}
-.green{background:#22c55e; top:50%; right:25%;}
-.red{background:#ef4444; bottom:20%; left:45%;}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.5);}
-100%{transform:scale(1);}
 }
 
 .devices{
@@ -204,15 +132,15 @@ margin-bottom:40px;
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:25px;
 }
 
 .card{
 background:#0d1224;
-border:1px solid rgba(255,255,255,0.1);
 border-radius:30px;
 padding:30px;
+border:1px solid rgba(255,255,255,0.1);
 transition:0.3s;
 }
 
@@ -233,26 +161,14 @@ color:#9ca3af;
 width:10px;
 height:10px;
 border-radius:50%;
-}
-
-.online{
 background:#22c55e;
-}
-
-.offline{
-background:#ef4444;
-}
-
-.battery{
-background:rgba(255,255,255,0.05);
-padding:10px 14px;
-border-radius:12px;
 }
 
 .device-buttons{
 display:flex;
-gap:12px;
+gap:10px;
 margin-top:25px;
+flex-wrap:wrap;
 }
 
 .small-btn{
@@ -260,8 +176,8 @@ flex:1;
 padding:12px;
 border:none;
 border-radius:14px;
-font-weight:bold;
 cursor:pointer;
+font-weight:bold;
 }
 
 .locate{
@@ -274,36 +190,9 @@ background:#eab308;
 color:black;
 }
 
-.about{
-padding:0 8% 80px;
-}
-
-.about-box{
-background:#0d1224;
-border-radius:30px;
-padding:50px;
-border:1px solid rgba(255,255,255,0.1);
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-}
-
-.contact-card{
-background:rgba(255,255,255,0.03);
-padding:25px;
-border-radius:20px;
-margin-bottom:20px;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-footer{
-border-top:1px solid rgba(255,255,255,0.1);
-padding:30px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:20px;
+.delete{
+background:#ef4444;
+color:white;
 }
 
 .modal{
@@ -341,22 +230,31 @@ gap:15px;
 margin-top:25px;
 }
 
+.about{
+padding:0 8% 80px;
+}
+
+.about-box{
+background:#0d1224;
+padding:50px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+footer{
+border-top:1px solid rgba(255,255,255,0.1);
+padding:30px 8%;
+margin-top:50px;
+}
+
 @media(max-width:900px){
 
 .hero{
 grid-template-columns:1fr;
 }
 
-.hero h2{
+.hero h1{
 font-size:50px;
-}
-
-.about-box{
-grid-template-columns:1fr;
-}
-
-.stats{
-flex-wrap:wrap;
 }
 
 }
@@ -376,7 +274,9 @@ R
 
 <div>
 <h1>RAMX</h1>
-<p>Smart Family Safety Platform</p>
+<p style="color:#60a5fa; font-size:12px;">
+Smart Family Safety Platform
+</p>
 </div>
 
 </div>
@@ -387,25 +287,20 @@ R
 
 <div>
 
-<div class="badge">
-● Live GPS Protection Active
-</div>
-
-<h2>
+<h1>
 Protect Your
-<span>Family Devices</span>
+<span>Devices</span>
 In Real Time
-</h2>
+</h1>
 
 <p>
-RAMX helps families securely monitor shared devices, locate lost phones,
-activate emergency tracking and stay connected through a professional live safety dashboard.
+RAMX helps families securely manage and monitor devices through a professional smart tracking dashboard.
 </p>
 
-<div class="buttons">
+<div style="display:flex; gap:20px;">
 
-<button class="btn primary" onclick="showMessage()">
-Start Tracking
+<button class="btn primary" onclick="openModal()">
+Add Device
 </button>
 
 <button class="btn secondary" onclick="scrollDevices()">
@@ -414,51 +309,13 @@ View Devices
 
 </div>
 
-<div class="stats">
-
-<div>
-<h3>24/7</h3>
-<p>Live Monitoring</p>
-</div>
-
-<div>
-<h3>99%</h3>
-<p>Secure Tracking</p>
-</div>
-
-<div>
-<h3>GPS</h3>
-<p>Location Sharing</p>
-</div>
-
-</div>
-
 </div>
 
 <div class="map-box">
 
-<div class="map-header">
-
-<div>
-<h3>Live Tracking Map</h3>
-<p style="color:#9ca3af;">
-Connected RAMX devices
-</p>
-</div>
-
-<button class="btn primary" onclick="showMessage()">
-Active
-</button>
-
-</div>
-
 <div class="map">
 
 <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=1600&auto=format&fit=crop">
-
-<div class="pin blue"></div>
-<div class="pin green"></div>
-<div class="pin red"></div>
 
 </div>
 
@@ -477,7 +334,7 @@ Connected Devices
 </h2>
 
 <p style="color:#9ca3af; margin-top:10px;">
-Securely monitored devices
+No devices connected yet
 </p>
 
 </div>
@@ -498,35 +355,25 @@ Securely monitored devices
 
 <div class="about-box">
 
-<div>
-
 <h2 style="font-size:45px; margin-bottom:25px;">
 About RAMX
 </h2>
 
 <p style="color:#9ca3af; line-height:1.9; font-size:18px;">
-RAMX is a professional family safety and smart device monitoring platform designed to help users protect and manage shared devices through live GPS tracking, emergency recovery tools and secure cloud-based monitoring.
+RAMX is a professional family safety and smart device monitoring platform designed to help users protect and manage shared devices through secure cloud-based monitoring.
 </p>
 
-</div>
+<div style="margin-top:30px;">
 
-<div>
-
-<div class="contact-card">
-
-<p style="color:#9ca3af; margin-bottom:10px;">
+<p style="margin-bottom:10px; color:#9ca3af;">
 Contact Email
 </p>
 
-<h2>
+<h2 style="margin-bottom:30px;">
 ramalivhanandamulelo@gmail.com
 </h2>
 
-</div>
-
-<div class="contact-card">
-
-<p style="color:#9ca3af; margin-bottom:10px;">
+<p style="margin-bottom:10px; color:#9ca3af;">
 Phone Number
 </p>
 
@@ -538,22 +385,15 @@ Phone Number
 
 </div>
 
-</div>
-
 </section>
 
 <footer>
 
-<div>
 <h2>RAMX</h2>
-<p style="color:#9ca3af;">
-Smart Family Safety Platform
-</p>
-</div>
 
-<div style="color:#9ca3af;">
+<p style="color:#9ca3af; margin-top:10px;">
 © 2026 RAMX. All rights reserved.
-</div>
+</p>
 
 </footer>
 
@@ -562,17 +402,17 @@ Smart Family Safety Platform
 <div class="modal-box">
 
 <h2 style="margin-bottom:20px;">
-Add Device
+Add New Device
 </h2>
 
-<input type="text" id="deviceName" placeholder="Enter device name">
+<input type="text" id="deviceName" placeholder="Device name">
 
-<input type="text" id="battery" placeholder="Battery percentage">
+<input type="text" id="deviceBattery" placeholder="Battery percentage">
 
 <div class="modal-buttons">
 
 <button class="btn primary" onclick="addDevice()">
-Add
+Save Device
 </button>
 
 <button class="btn secondary" onclick="closeModal()">
@@ -587,26 +427,7 @@ Cancel
 
 <script>
 
-const devices = [
-{
-name:"Samsung Galaxy S24",
-battery:"82%",
-status:"Online",
-location:"Active Location Available"
-},
-{
-name:"iPhone 15 Pro",
-battery:"64%",
-status:"Online",
-location:"Connected To Live Tracking"
-},
-{
-name:"Redmi Note 13",
-battery:"21%",
-status:"Offline",
-location:"Last Seen 15 Minutes Ago"
-}
-];
+const devices = [];
 
 function renderDevices(){
 
@@ -614,7 +435,32 @@ const cards = document.getElementById("cards");
 
 cards.innerHTML = "";
 
-devices.forEach(device => {
+if(devices.length === 0){
+
+cards.innerHTML = `
+<div style="
+background:#0d1224;
+padding:60px;
+border-radius:30px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.1);
+">
+
+<h2 style="margin-bottom:15px;">
+No Devices Yet
+</h2>
+
+<p style="color:#9ca3af;">
+Press Add Device to start tracking your phones.
+</p>
+
+</div>
+`;
+
+return;
+}
+
+devices.forEach((device,index)=>{
 
 cards.innerHTML += `
 <div class="card">
@@ -623,15 +469,19 @@ cards.innerHTML += `
 
 <h2>${device.name}</h2>
 
-<div class="battery">
-${device.battery}
+<div style="
+background:rgba(255,255,255,0.05);
+padding:10px 14px;
+border-radius:12px;
+">
+${device.battery}%
 </div>
 
 </div>
 
 <div class="status">
 
-<div class="dot ${device.status === "Online" ? "online" : "offline"}"></div>
+<div class="dot"></div>
 
 ${device.status}
 
@@ -643,12 +493,19 @@ ${device.location}
 
 <div class="device-buttons">
 
-<button class="small-btn locate" onclick="alert('Locating ${device.name}')">
+<button class="small-btn locate"
+onclick="locateDevice(${index})">
 Locate
 </button>
 
-<button class="small-btn ring" onclick="alert('Ringing ${device.name}')">
+<button class="small-btn ring"
+onclick="ringDevice(${index})">
 Ring
+</button>
+
+<button class="small-btn delete"
+onclick="deleteDevice(${index})">
+Delete
 </button>
 
 </div>
@@ -673,19 +530,18 @@ document.getElementById("modal").style.display = "none";
 function addDevice(){
 
 const name = document.getElementById("deviceName").value;
-
-const battery = document.getElementById("battery").value;
+const battery = document.getElementById("deviceBattery").value;
 
 if(name === "" || battery === ""){
-alert("Please fill all fields");
+alert("Fill all fields");
 return;
 }
 
 devices.push({
 name:name,
-battery:battery + "%",
-status:"Online",
-location:"New Device Connected"
+battery:battery,
+status:"Connected",
+location:"Live location ready"
 });
 
 renderDevices();
@@ -693,7 +549,39 @@ renderDevices();
 closeModal();
 
 document.getElementById("deviceName").value = "";
-document.getElementById("battery").value = "";
+document.getElementById("deviceBattery").value = "";
+
+}
+
+function locateDevice(index){
+
+devices[index].location = "Tracking device now...";
+
+renderDevices();
+
+}
+
+function ringDevice(index){
+
+devices[index].status = "Ringing Device";
+
+renderDevices();
+
+setTimeout(()=>{
+
+devices[index].status = "Connected";
+
+renderDevices();
+
+},2000);
+
+}
+
+function deleteDevice(index){
+
+devices.splice(index,1);
+
+renderDevices();
 
 }
 
@@ -703,10 +591,6 @@ document.getElementById("devices").scrollIntoView({
 behavior:"smooth"
 });
 
-}
-
-function showMessage(){
-alert("RAMX live tracking system coming soon.");
 }
 
 </script>
