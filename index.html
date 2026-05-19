@@ -1,538 +1,715 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RAMX - Smart Family Safety Platform</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAMX - Smart Family Safety Platform</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
-    }
+<style>
 
-    body{
-      background:#050816;
-      color:white;
-      overflow-x:hidden;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
 
-    nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:25px 8%;
-      border-bottom:1px solid rgba(255,255,255,0.1);
-      position:sticky;
-      top:0;
-      background:#050816ee;
-      backdrop-filter:blur(10px);
-      z-index:100;
-    }
+body{
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
 
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 8%;
+border-bottom:1px solid rgba(255,255,255,0.1);
+position:sticky;
+top:0;
+background:#050816ee;
+backdrop-filter:blur(10px);
+z-index:100;
+}
 
-    .logo-box{
-      width:50px;
-      height:50px;
-      border-radius:16px;
-      background:#2563eb;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:28px;
-      font-weight:bold;
-    }
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
 
-    .logo h1{
-      font-size:34px;
-    }
+.logo-box{
+width:50px;
+height:50px;
+border-radius:16px;
+background:#2563eb;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+font-weight:bold;
+}
 
-    .logo p{
-      color:#60a5fa;
-      font-size:12px;
-    }
+.logo h1{
+font-size:34px;
+}
 
-    .hero{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:center;
-      padding:80px 8%;
-    }
+.logo p{
+color:#60a5fa;
+font-size:12px;
+}
 
-    .badge{
-      display:inline-block;
-      background:rgba(37,99,235,0.2);
-      border:1px solid rgba(37,99,235,0.3);
-      color:#60a5fa;
-      padding:12px 20px;
-      border-radius:100px;
-      margin-bottom:25px;
-    }
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+padding:80px 8%;
+}
 
-    .hero h2{
-      font-size:70px;
-      line-height:1.1;
-      margin-bottom:25px;
-    }
+.badge{
+display:inline-block;
+background:rgba(37,99,235,0.2);
+border:1px solid rgba(37,99,235,0.3);
+color:#60a5fa;
+padding:12px 20px;
+border-radius:100px;
+margin-bottom:25px;
+}
 
-    .hero h2 span{
-      color:#2563eb;
-    }
+.hero h2{
+font-size:70px;
+line-height:1.1;
+margin-bottom:25px;
+}
 
-    .hero p{
-      color:#9ca3af;
-      line-height:1.8;
-      font-size:18px;
-      margin-bottom:35px;
-    }
+.hero h2 span{
+color:#2563eb;
+}
 
-    .buttons{
-      display:flex;
-      gap:20px;
-      margin-bottom:50px;
-    }
+.hero p{
+color:#9ca3af;
+line-height:1.8;
+font-size:18px;
+margin-bottom:35px;
+}
 
-    .btn{
-      padding:16px 30px;
-      border:none;
-      border-radius:18px;
-      cursor:pointer;
-      font-size:16px;
-      font-weight:bold;
-      transition:0.3s;
-    }
+.buttons{
+display:flex;
+gap:20px;
+margin-bottom:50px;
+}
 
-    .primary{
-      background:#2563eb;
-      color:white;
-    }
+.btn{
+padding:16px 30px;
+border:none;
+border-radius:18px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+transition:0.3s;
+}
 
-    .primary:hover{
-      background:#1d4ed8;
-    }
+.primary{
+background:#2563eb;
+color:white;
+}
 
-    .secondary{
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.2);
-      color:white;
-    }
+.primary:hover{
+background:#1d4ed8;
+}
 
-    .stats{
-      display:flex;
-      gap:50px;
-    }
+.secondary{
+background:transparent;
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+}
 
-    .stats h3{
-      font-size:35px;
-    }
+.stats{
+display:flex;
+gap:50px;
+}
 
-    .stats p{
-      font-size:14px;
-      margin-top:5px;
-    }
+.stats h3{
+font-size:35px;
+}
 
-    .map-box{
-      background:#0d1224;
-      border-radius:30px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.1);
-      position:relative;
-    }
+.stats p{
+font-size:14px;
+margin-top:5px;
+}
 
-    .map-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px;
-      border-bottom:1px solid rgba(255,255,255,0.1);
-    }
+.map-box{
+background:#0d1224;
+border-radius:30px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.1);
+position:relative;
+}
 
-    .map{
-      position:relative;
-      height:500px;
-    }
+.map-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
 
-    .map img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
+.map{
+position:relative;
+height:500px;
+overflow:hidden;
+}
 
-    .pin{
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      position:absolute;
-      animation:pulse 1.5s infinite;
-    }
+.map img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.4s;
+}
 
-    .blue{background:#3b82f6; top:20%; left:30%;}
-    .green{background:#22c55e; top:50%; right:25%;}
-    .red{background:#ef4444; bottom:20%; left:45%;}
+.map:hover img{
+transform:scale(1.05);
+}
 
-    @keyframes pulse{
-      0%{transform:scale(1);}
-      50%{transform:scale(1.5);}
-      100%{transform:scale(1);}
-    }
+.pin{
+width:18px;
+height:18px;
+border-radius:50%;
+position:absolute;
+animation:pulse 1.5s infinite;
+}
 
-    .devices{
-      padding:20px 8% 80px;
-    }
+.blue{background:#3b82f6; top:20%; left:30%;}
+.green{background:#22c55e; top:50%; right:25%;}
+.red{background:#ef4444; bottom:20%; left:45%;}
 
-    .devices-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:40px;
-    }
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.5);}
+100%{transform:scale(1);}
+}
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:25px;
-    }
+.devices{
+padding:20px 8% 80px;
+}
 
-    .card{
-      background:#0d1224;
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:30px;
-      padding:30px;
-      transition:0.3s;
-    }
+.devices-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+}
 
-    .card:hover{
-      transform:translateY(-8px);
-      border-color:#2563eb;
-    }
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
 
-    .status{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin:15px 0;
-      color:#9ca3af;
-    }
+.card{
+background:#0d1224;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:30px;
+padding:30px;
+transition:0.3s;
+}
 
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-    }
+.card:hover{
+transform:translateY(-8px);
+border-color:#2563eb;
+}
 
-    .online{background:#22c55e;}
-    .offline{background:#ef4444;}
+.status{
+display:flex;
+align-items:center;
+gap:10px;
+margin:15px 0;
+color:#9ca3af;
+}
 
-    .battery{
-      background:rgba(255,255,255,0.05);
-      padding:10px 14px;
-      border-radius:12px;
-    }
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+}
 
-    .about{
-      padding:0 8% 80px;
-    }
+.online{
+background:#22c55e;
+}
 
-    .about-box{
-      background:#0d1224;
-      border-radius:30px;
-      padding:50px;
-      border:1px solid rgba(255,255,255,0.1);
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:50px;
-    }
+.offline{
+background:#ef4444;
+}
 
-    .contact-card{
-      background:rgba(255,255,255,0.03);
-      padding:25px;
-      border-radius:20px;
-      margin-bottom:20px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
+.battery{
+background:rgba(255,255,255,0.05);
+padding:10px 14px;
+border-radius:12px;
+}
 
-    footer{
-      border-top:1px solid rgba(255,255,255,0.1);
-      padding:30px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:20px;
-    }
+.device-buttons{
+display:flex;
+gap:12px;
+margin-top:25px;
+}
 
-    @media(max-width:900px){
+.small-btn{
+flex:1;
+padding:12px;
+border:none;
+border-radius:14px;
+font-weight:bold;
+cursor:pointer;
+}
 
-      .hero{
-        grid-template-columns:1fr;
-      }
+.locate{
+background:#2563eb;
+color:white;
+}
 
-      .hero h2{
-        font-size:50px;
-      }
+.ring{
+background:#eab308;
+color:black;
+}
 
-      .about-box{
-        grid-template-columns:1fr;
-      }
+.about{
+padding:0 8% 80px;
+}
 
-      .stats{
-        flex-wrap:wrap;
-      }
-    }
-  </style>
+.about-box{
+background:#0d1224;
+border-radius:30px;
+padding:50px;
+border:1px solid rgba(255,255,255,0.1);
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+}
+
+.contact-card{
+background:rgba(255,255,255,0.03);
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+footer{
+border-top:1px solid rgba(255,255,255,0.1);
+padding:30px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.modal-box{
+background:#0d1224;
+padding:40px;
+border-radius:30px;
+width:90%;
+max-width:450px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.modal input{
+width:100%;
+padding:16px;
+margin-top:15px;
+border:none;
+border-radius:14px;
+background:#111827;
+color:white;
+}
+
+.modal-buttons{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.hero h2{
+font-size:50px;
+}
+
+.about-box{
+grid-template-columns:1fr;
+}
+
+.stats{
+flex-wrap:wrap;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <nav>
-    <div class="logo">
-      <div class="logo-box">R</div>
+<nav>
 
-      <div>
-        <h1>RAMX</h1>
-        <p>Smart Family Safety Platform</p>
-      </div>
-    </div>
-  </nav>
+<div class="logo">
 
-  <section class="hero">
+<div class="logo-box">
+R
+</div>
 
-    <div>
+<div>
+<h1>RAMX</h1>
+<p>Smart Family Safety Platform</p>
+</div>
 
-      <div class="badge">
-        ● Live GPS Protection Active
-      </div>
+</div>
 
-      <h2>
-        Protect Your
-        <span>Family Devices</span>
-        In Real Time
-      </h2>
+</nav>
 
-      <p>
-        RAMX helps families securely monitor shared devices, locate lost phones,
-        activate emergency tracking and stay connected through a professional live safety dashboard.
-      </p>
+<section class="hero">
 
-      <div class="buttons">
-        <button class="btn primary">
-          Start Tracking
-        </button>
+<div>
 
-        <button class="btn secondary">
-          View Devices
-        </button>
-      </div>
+<div class="badge">
+● Live GPS Protection Active
+</div>
 
-      <div class="stats">
+<h2>
+Protect Your
+<span>Family Devices</span>
+In Real Time
+</h2>
 
-        <div>
-          <h3>24/7</h3>
-          <p>Live Monitoring</p>
-        </div>
+<p>
+RAMX helps families securely monitor shared devices, locate lost phones,
+activate emergency tracking and stay connected through a professional live safety dashboard.
+</p>
 
-        <div>
-          <h3>99%</h3>
-          <p>Secure Tracking</p>
-        </div>
+<div class="buttons">
 
-        <div>
-          <h3>GPS</h3>
-          <p>Location Sharing</p>
-        </div>
+<button class="btn primary" onclick="showMessage()">
+Start Tracking
+</button>
 
-      </div>
+<button class="btn secondary" onclick="scrollDevices()">
+View Devices
+</button>
 
-    </div>
+</div>
 
-    <div class="map-box">
+<div class="stats">
 
-      <div class="map-header">
-        <div>
-          <h3>Live Tracking Map</h3>
-          <p style="color:#9ca3af;">
-            Connected RAMX devices
-          </p>
-        </div>
+<div>
+<h3>24/7</h3>
+<p>Live Monitoring</p>
+</div>
 
-        <button class="btn primary">
-          Active
-        </button>
-      </div>
+<div>
+<h3>99%</h3>
+<p>Secure Tracking</p>
+</div>
 
-      <div class="map">
+<div>
+<h3>GPS</h3>
+<p>Location Sharing</p>
+</div>
 
-        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=1600&auto=format&fit=crop">
+</div>
 
-        <div class="pin blue"></div>
-        <div class="pin green"></div>
-        <div class="pin red"></div>
+</div>
 
-      </div>
+<div class="map-box">
 
-    </div>
+<div class="map-header">
 
-  </section>
+<div>
+<h3>Live Tracking Map</h3>
+<p style="color:#9ca3af;">
+Connected RAMX devices
+</p>
+</div>
 
-  <section class="devices">
+<button class="btn primary" onclick="showMessage()">
+Active
+</button>
 
-    <div class="devices-top">
+</div>
 
-      <div>
-        <h2 style="font-size:45px;">
-          Connected Devices
-        </h2>
+<div class="map">
 
-        <p style="color:#9ca3af; margin-top:10px;">
-          Securely monitored devices
-        </p>
-      </div>
+<img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=1600&auto=format&fit=crop">
 
-      <button class="btn primary">
-        + Add Device
-      </button>
+<div class="pin blue"></div>
+<div class="pin green"></div>
+<div class="pin red"></div>
 
-    </div>
+</div>
 
-    <div class="cards">
+</div>
 
-      <div class="card">
+</section>
 
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h2>Samsung Galaxy S24</h2>
+<section class="devices" id="devices">
 
-          <div class="battery">
-            82%
-          </div>
-        </div>
+<div class="devices-top">
 
-        <div class="status">
-          <div class="dot online"></div>
-          Online
-        </div>
+<div>
 
-        <p style="color:#9ca3af;">
-          Active Location Available
-        </p>
+<h2 style="font-size:45px;">
+Connected Devices
+</h2>
 
-      </div>
+<p style="color:#9ca3af; margin-top:10px;">
+Securely monitored devices
+</p>
 
-      <div class="card">
+</div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h2>iPhone 15 Pro</h2>
+<button class="btn primary" onclick="openModal()">
++ Add Device
+</button>
 
-          <div class="battery">
-            64%
-          </div>
-        </div>
+</div>
 
-        <div class="status">
-          <div class="dot online"></div>
-          Online
-        </div>
+<div class="cards" id="cards">
 
-        <p style="color:#9ca3af;">
-          Connected To Live Tracking
-        </p>
+</div>
 
-      </div>
+</section>
 
-      <div class="card">
+<section class="about">
 
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h2>Redmi Note 13</h2>
+<div class="about-box">
 
-          <div class="battery">
-            21%
-          </div>
-        </div>
+<div>
 
-        <div class="status">
-          <div class="dot offline"></div>
-          Offline
-        </div>
+<h2 style="font-size:45px; margin-bottom:25px;">
+About RAMX
+</h2>
 
-        <p style="color:#9ca3af;">
-          Last Seen 15 Minutes Ago
-        </p>
+<p style="color:#9ca3af; line-height:1.9; font-size:18px;">
+RAMX is a professional family safety and smart device monitoring platform designed to help users protect and manage shared devices through live GPS tracking, emergency recovery tools and secure cloud-based monitoring.
+</p>
 
-      </div>
+</div>
 
-    </div>
+<div>
 
-  </section>
+<div class="contact-card">
 
-  <section class="about">
+<p style="color:#9ca3af; margin-bottom:10px;">
+Contact Email
+</p>
 
-    <div class="about-box">
+<h2>
+ramalivhanandamulelo@gmail.com
+</h2>
 
-      <div>
+</div>
 
-        <h2 style="font-size:45px; margin-bottom:25px;">
-          About RAMX
-        </h2>
+<div class="contact-card">
 
-        <p style="color:#9ca3af; line-height:1.9; font-size:18px;">
-          RAMX is a professional family safety and smart device monitoring platform designed to help users protect and manage shared devices through live GPS tracking, emergency recovery tools and secure cloud-based monitoring.
-        </p>
+<p style="color:#9ca3af; margin-bottom:10px;">
+Phone Number
+</p>
 
-      </div>
+<h2>
+0609486195
+</h2>
 
-      <div>
+</div>
 
-        <div class="contact-card">
+</div>
 
-          <p style="color:#9ca3af; margin-bottom:10px;">
-            Contact Email
-          </p>
+</div>
 
-          <h2>
-            ramalivhanandamulelo@gmail.com
-          </h2>
+</section>
 
-        </div>
+<footer>
 
-        <div class="contact-card">
+<div>
+<h2>RAMX</h2>
+<p style="color:#9ca3af;">
+Smart Family Safety Platform
+</p>
+</div>
 
-          <p style="color:#9ca3af; margin-bottom:10px;">
-            Phone Number
-          </p>
+<div style="color:#9ca3af;">
+© 2026 RAMX. All rights reserved.
+</div>
 
-          <h2>
-            0609486195
-          </h2>
+</footer>
 
-        </div>
+<div class="modal" id="modal">
 
-      </div>
+<div class="modal-box">
 
-    </div>
+<h2 style="margin-bottom:20px;">
+Add Device
+</h2>
 
-  </section>
+<input type="text" id="deviceName" placeholder="Enter device name">
 
-  <footer>
+<input type="text" id="battery" placeholder="Battery percentage">
 
-    <div>
-      <h2>RAMX</h2>
-      <p style="color:#9ca3af;">
-        Smart Family Safety Platform
-      </p>
-    </div>
+<div class="modal-buttons">
 
-    <div style="color:#9ca3af;">
-      © 2026 RAMX. All rights reserved.
-    </div>
+<button class="btn primary" onclick="addDevice()">
+Add
+</button>
 
-  </footer>
+<button class="btn secondary" onclick="closeModal()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const devices = [
+{
+name:"Samsung Galaxy S24",
+battery:"82%",
+status:"Online",
+location:"Active Location Available"
+},
+{
+name:"iPhone 15 Pro",
+battery:"64%",
+status:"Online",
+location:"Connected To Live Tracking"
+},
+{
+name:"Redmi Note 13",
+battery:"21%",
+status:"Offline",
+location:"Last Seen 15 Minutes Ago"
+}
+];
+
+function renderDevices(){
+
+const cards = document.getElementById("cards");
+
+cards.innerHTML = "";
+
+devices.forEach(device => {
+
+cards.innerHTML += `
+<div class="card">
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+
+<h2>${device.name}</h2>
+
+<div class="battery">
+${device.battery}
+</div>
+
+</div>
+
+<div class="status">
+
+<div class="dot ${device.status === "Online" ? "online" : "offline"}"></div>
+
+${device.status}
+
+</div>
+
+<p style="color:#9ca3af;">
+${device.location}
+</p>
+
+<div class="device-buttons">
+
+<button class="small-btn locate" onclick="alert('Locating ${device.name}')">
+Locate
+</button>
+
+<button class="small-btn ring" onclick="alert('Ringing ${device.name}')">
+Ring
+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+renderDevices();
+
+function openModal(){
+document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display = "none";
+}
+
+function addDevice(){
+
+const name = document.getElementById("deviceName").value;
+
+const battery = document.getElementById("battery").value;
+
+if(name === "" || battery === ""){
+alert("Please fill all fields");
+return;
+}
+
+devices.push({
+name:name,
+battery:battery + "%",
+status:"Online",
+location:"New Device Connected"
+});
+
+renderDevices();
+
+closeModal();
+
+document.getElementById("deviceName").value = "";
+document.getElementById("battery").value = "";
+
+}
+
+function scrollDevices(){
+
+document.getElementById("devices").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function showMessage(){
+alert("RAMX live tracking system coming soon.");
+}
+
+</script>
 
 </body>
 </html>
