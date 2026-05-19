@@ -1,230 +1,225 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NDAMUE RAMS TECH</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      background: black;
-      overflow-x: hidden;
-    }
+export default function FamilySafetyTracker() {
+  const company = {
+    name: "RAMX",
+    email: "ramalivhanandamulelo@gmail.com",
+    phone: "0609486195",
+  };
+  const devices = [
+    {
+      device: "Samsung Galaxy S24",
+      status: "Online",
+      battery: "82%",
+      location: "Active Location Available",
+    },
+    {
+      device: "iPhone 15 Pro",
+      status: "Online",
+      battery: "64%",
+      location: "Connected to Live Tracking",
+    },
+    {
+      device: "Redmi Note 13",
+      status: "Offline",
+      battery: "21%",
+      location: "Last Seen 15 Minutes Ago",
+    },
+  ];
 
-    canvas#matrix {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-    }
+  return (
+    <div className="min-h-screen bg-black text-white p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-2xl font-bold shadow-xl">
+                  R
+                </div>
+                <h1 className="text-5xl font-extrabold tracking-tight">RAMX</h1>
+              </div>
+              <p className="text-blue-400 font-medium text-lg">
+                Smart Family Safety & Device Tracking
+              </p>
+            <p className="text-gray-400 mt-2">
+              Professional real-time family protection platform
+            </p>
+          </div>
 
-    header {
-      text-align: center;
-      padding: 60px 20px 20px;
-    }
+          <button className="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-2xl font-semibold transition">
+            + Add Device
+          </button>
+        </div>
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #00eaff;
-      text-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff;
-    }
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl border border-zinc-800">
+            <div className="p-5 border-b border-zinc-800 flex items-center justify-between">
+              <h2 className="text-2xl font-semibold">Live Family Map</h2>
 
-    header .logo {
-      font-size: 4rem;
-      font-weight: bold;
-      background: linear-gradient(45deg, #00eaff, #ff00ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
+              <div className="flex gap-3">
+                <button className="bg-green-600 px-4 py-2 rounded-xl">
+                  Live Tracking
+                </button>
 
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
+                <button className="bg-red-600 px-4 py-2 rounded-xl">
+                  Lost Mode
+                </button>
+              </div>
+            </div>
 
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #00eaff;
-    }
+            <div className="h-[500px] w-full relative bg-zinc-950 flex items-center justify-center">
+              <img
+                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1600&auto=format&fit=crop"
+                alt="Map"
+                className="w-full h-full object-cover opacity-60"
+              />
 
-    section p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto 20px;
-    }
+              <div className="absolute inset-0 bg-black/40" />
 
-    .services {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+              <div className="absolute top-20 left-24 bg-blue-500 w-5 h-5 rounded-full animate-ping" />
+              <div className="absolute top-20 left-24 bg-blue-500 w-5 h-5 rounded-full" />
 
-    .service-card {
-      background: rgba(0,0,0,0.7);
-      border: 1px solid #00eaff;
-      border-radius: 12px;
-      padding: 20px;
-      width: 300px;
-      transition: 0.3s;
-    }
+              <div className="absolute bottom-24 right-40 bg-green-500 w-5 h-5 rounded-full animate-ping" />
+              <div className="absolute bottom-24 right-40 bg-green-500 w-5 h-5 rounded-full" />
 
-    .service-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00eaff;
-    }
+              <div className="absolute bottom-16 left-1/2 bg-red-500 w-5 h-5 rounded-full animate-ping" />
+              <div className="absolute bottom-16 left-1/2 bg-red-500 w-5 h-5 rounded-full" />
 
-    form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+              <div className="absolute bottom-6 left-6 bg-black/70 p-4 rounded-2xl border border-zinc-700">
+                <p className="text-sm text-gray-300">
+                  Real GPS tracking can be connected later using Firebase + phone permissions.
+                </p>
+              </div>
+            </div>
+          </div>
 
-    input, textarea {
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
+          <div className="space-y-6">
+            <div className="bg-zinc-900 rounded-3xl p-5 border border-zinc-800 shadow-xl">
+              <h2 className="text-2xl font-semibold mb-5">Connected Devices</h2>
 
-    button {
-      background: #00eaff;
-      border: none;
-      padding: 12px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+              <div className="space-y-4">
+                {devices.map((device, index) => (
+                  <div
+                    key={index}
+                    className="bg-zinc-800 rounded-2xl p-4 border border-zinc-700"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="font-semibold text-lg">{device.device}</h3>
 
-    button:hover {
-      background: #00c3cc;
-    }
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm ${
+                          device.status === "Online"
+                            ? "bg-green-600"
+                            : "bg-red-600"
+                        }`}
+                      >
+                        {device.status}
+                      </span>
+                    </div>
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid #00eaff;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
+                    <div className="space-y-2 text-gray-300 text-sm">
+                      <p>Battery: {device.battery}</p>
+                      <p>{device.location}</p>
+                    </div>
 
-    #thankYouMessage {
-      display: none;
-      text-align: center;
-      margin-top: 20px;
-      color: #00ff99;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <canvas id="matrix"></canvas>
+                    <div className="flex gap-2 mt-4">
+                      <button className="flex-1 bg-blue-600 hover:bg-blue-700 py-2 rounded-xl text-sm">
+                        Locate
+                      </button>
 
-  <header>
-    <div class="logo">⌨️</div>
-    <h1>NDAMUE RAMS TECH</h1>
-    <p>We Build Modern Websites & Software Solutions</p>
-  </header>
+                      <button className="flex-1 bg-yellow-600 hover:bg-yellow-700 py-2 rounded-xl text-sm">
+                        Ring
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-  <section>
-    <h2>About Us</h2>
-    <p>At Ndamue Rams Tech, we specialize in creating beautiful, responsive, and functional websites and software solutions tailored to your needs. From business websites to advanced software, we bring your ideas to life.</p>
-  </section>
+            <div className="bg-zinc-900 rounded-3xl p-5 border border-zinc-800 shadow-xl">
+              <h2 className="text-2xl font-semibold mb-4">Emergency</h2>
 
-  <section>
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service-card">
-        <h3>🌐 Website Development</h3>
-        <p>Responsive, fast, and modern websites that help your business shine online.</p>
-      </div>
-      <div class="service-card">
-        <h3>💻 Software Solutions</h3>
-        <p>Custom desktop and web-based software designed for your unique needs.</p>
-      </div>
-      <div class="service-card">
-        <h3>📱 Mobile Apps</h3>
-        <p>Android applications that bring your services closer to your customers.</p>
+              <div className="space-y-3">
+                <button className="w-full bg-red-600 hover:bg-red-700 py-3 rounded-2xl font-semibold">
+                  Activate Lost Mode
+                </button>
+
+                <button className="w-full bg-green-600 hover:bg-green-700 py-3 rounded-2xl font-semibold">
+                  Share Live Location
+                </button>
+
+                <button className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-2xl font-semibold">
+                  Call Emergency Contact
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 grid lg:grid-cols-2 gap-6">
+          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800">
+            <h2 className="text-3xl font-bold mb-4">About RAMX</h2>
+
+            <p className="text-gray-300 leading-7 mb-6">
+              RAMX is a modern family safety and phone recovery platform designed to help families stay connected and protect their devices in emergency situations.
+            </p>
+
+            <div className="space-y-4">
+              <div className="bg-zinc-800 p-4 rounded-2xl border border-zinc-700">
+                <p className="text-gray-400 text-sm mb-1">Email</p>
+                <p className="font-semibold text-lg">{company.email}</p>
+              </div>
+
+              <div className="bg-zinc-800 p-4 rounded-2xl border border-zinc-700">
+                <p className="text-gray-400 text-sm mb-1">Phone</p>
+                <p className="font-semibold text-lg">{company.phone}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-zinc-900 rounded-3xl p-6 border border-zinc-800">
+          <h2 className="text-2xl font-semibold mb-4">How To Make It Real</h2>
+
+          <div className="grid md:grid-cols-4 gap-4">
+            <div className="bg-zinc-800 p-4 rounded-2xl">
+              <h3 className="font-semibold mb-2">1. Firebase</h3>
+              <p className="text-gray-400 text-sm">
+                Connect Firebase Authentication and Firestore.
+              </p>
+            </div>
+
+            <div className="bg-zinc-800 p-4 rounded-2xl">
+              <h3 className="font-semibold mb-2">2. GPS</h3>
+              <p className="text-gray-400 text-sm">
+                Use browser location permission for tracking.
+              </p>
+            </div>
+
+            <div className="bg-zinc-800 p-4 rounded-2xl">
+              <h3 className="font-semibold mb-2">3. Maps</h3>
+              <p className="text-gray-400 text-sm">
+                Connect Mapbox or Google Maps.
+              </p>
+            </div>
+
+            <div className="bg-zinc-800 p-4 rounded-2xl">
+              <h3 className="font-semibold mb-2">4. Deploy</h3>
+              <p className="text-gray-400 text-sm">
+                Upload to GitHub then deploy with Vercel.
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <footer className="mt-10 border-t border-zinc-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-400">
+          <p>© 2026 RAMX. All rights reserved.</p>
+
+          <div className="flex gap-6 text-sm">
+            <span>{company.email}</span>
+            <span>{company.phone}</span>
+          </div>
+        </footer>
       </div>
     </div>
-  </section>
-
-  <section>
-    <h2>Contact Us</h2>
-    <form name="contact" method="POST" data-netlify="true">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="phone" placeholder="Your Phone/WhatsApp" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <div id="thankYouMessage">✅ Thank you for contacting us! We’ll get back to you soon.</div>
-  </section>
-
-  <footer>
-    <p>📞 Phone/WhatsApp: 060 948 6195 | 📧 Email: ramalivhanandamulelo@gmail.com</p>
-    <p>&copy; 2025 NDAMUE RAMS TECH. All Rights Reserved.</p>
-  </footer>
-
-  <!-- Matrix Background Script -->
-  <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = "01".split("");
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function draw() {
-      ctx.fillStyle = "rgba(0,0,0,0.05)";
-      ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = "#00eaff";
-      ctx.font = fontSize + "px monospace";
-      for(let i=0;i<drops.length;i++) {
-        const text = letters[Math.floor(Math.random()*letters.length)];
-        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-        if(drops[i]*fontSize > canvas.height && Math.random()>0.975) {
-          drops[i]=0;
-        }
-        drops[i]++;
-      }
-    }
-    setInterval(draw,35);
-
-    // Thank You Popup
-    const form = document.querySelector("form");
-    const thankYouMessage = document.getElementById("thankYouMessage");
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      thankYouMessage.style.display = "block";
-      form.reset();
-    });
-  </script>
-
-  <!-- AI Assistant (ChatGPT Widget) -->
-  <script src="https://cdn.jsdelivr.net/npm/@chatgpt-widget/chatgpt-widget@1.0.6/dist/widget.min.js"></script>
-  <script>
-    ChatGPTWidget.init({
-      apiKey: "YOUR_OPENAI_API_KEY",  // Replace with your OpenAI key
-      botName: "Ndamue AI Assistant",
-      welcomeMessage: "Hi 👋 I'm your smart tech assistant! Ask me anything about websites or software.",
-      placeholder: "Type your question...",
-      position: "bottom-right",
-      avatar: "https://i.imgur.com/6z4cPpN.png"
-    });
-  </script>
-</body>
-</html>
+  );
+}
